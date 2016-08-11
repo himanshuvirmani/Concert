@@ -27,7 +27,7 @@
 
     <logger name="com.concert" level="${logback.loglevel}">
     </logger>
-
+    <logger name="org.springframework.data.document.mongodb" level="DEBUG" />
     <logger name="javax.activation" level="WARN"/>
     <logger name="javax.mail" level="WARN"/>
     <logger name="javax.xml.bind" level="WARN"/>

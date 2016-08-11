@@ -16,6 +16,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.data.auditing.DateTimeProvider;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StringUtils;
 
@@ -25,6 +26,7 @@ import java.util.Arrays;
 @Configuration
 @EnableJpaAuditing(dateTimeProviderRef = "dateTimeProvider")
 @EnableJpaRepositories("com.concert.repository")
+@EnableMongoRepositories("com.concert.repository")
 @EnableTransactionManagement
 public class DatabaseConfiguration implements EnvironmentAware {
 
