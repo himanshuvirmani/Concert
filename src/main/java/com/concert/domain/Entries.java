@@ -59,7 +59,7 @@ public class Entries implements Serializable, RedisJsonMapper<Entries>{
 
     private String type;
 
-    private long version;
+    private int version;
 
     @JsonProperty(value = "attributes")
     @Field(value = "attributes")

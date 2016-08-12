@@ -26,4 +26,9 @@ public class EntriesServiceImpl implements EntriesService {
         List<Entries> entries = entriesRepository.findByActorId(actorId);
         return entries;
     }
+
+    @Override
+    public List<Entries> addEntries(List<Entries> entries) {
+        return entriesRepository.save(entries);
+    }
 }

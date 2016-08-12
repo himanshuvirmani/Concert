@@ -19,11 +19,14 @@ package com.concert.web.rest;
 import com.concert.domain.Entries;
 import com.concert.service.EntriesService;
 import com.concert.web.rest.errors.AggregateNotFoundException;
+import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -37,8 +40,20 @@ public class EntriesController extends BaseController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @Transactional(readOnly = true)
-    public List<Entries> getAggregate(@PathVariable("actor_id") String actorId) {
+    public List<Entries> getEntriesForActor(@PathVariable("actor_id") String actorId) {
         List<Entries> result = this.entriesService.getEntriesByActorId(actorId);
+        if (result == null) {
+            throw new AggregateNotFoundException();
+        }
+        return result;
+    }
+
+    @RequestMapping(value = "/", method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<Entries> addEntries(@RequestBody List<Entries> entries) {
+        if(CollectionUtils.isEmpty(entries)) return new ArrayList<>();
+        List<Entries> result = this.entriesService.addEntries(entries);
         if (result == null) {
             throw new AggregateNotFoundException();
         }
