@@ -7,7 +7,7 @@
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <charset>utf-8</charset>
-            <Pattern>[%p] %c - %m%n</Pattern>
+            <Pattern>%boldYellow([%d]) %highlight(%-5level) %green([%X]) %cyan(%logger{0}) - %m%n</Pattern>
         </encoder>
     </appender>
 
@@ -16,7 +16,7 @@
         <file>${DEV_HOME}/access.log</file>
         <encoder>
             <charset>utf-8</charset>
-            <Pattern>%d %-5level [%thread] %logger{0}: %msg%n</Pattern>
+            <Pattern>%boldYellow([%d]) %highlight(%-5level) %green([%X]) %cyan(%logger{0}): %msg%n</Pattern>
         </encoder>
     </appender>
 
@@ -25,34 +25,34 @@
         <appender-ref ref="FILE"/>
       </appender>-->
 
-    <logger name="com.concert" level="${logback.loglevel}">
-    </logger>
-    <logger name="org.springframework.data.document.mongodb" level="DEBUG" />
-    <logger name="javax.activation" level="WARN"/>
-    <logger name="javax.mail" level="WARN"/>
-    <logger name="javax.xml.bind" level="WARN"/>
-    <logger name="ch.qos.logback" level="WARN"/>
-    <logger name="com.codahale.metrics" level="WARN"/>
-    <logger name="com.ryantenney" level="WARN"/>
-    <logger name="com.sun.xml.internal.bind" level="WARN"/>
-    <logger name="com.zaxxer" level="WARN"/>
-    <logger name="io.undertow" level="WARN"/>
-    <logger name="net.sf.ehcache" level="WARN"/>
-    <logger name="org.apache" level="WARN"/>
+    <logger name="com.concert" level="${logback.loglevel}"/>
+    <logger name="javax.activation" level="INFO"/>
+    <logger name="javax.mail" level="INFO"/>
+    <logger name="javax.xml.bind" level="INFO"/>
+    <logger name="ch.qos.logback" level="INFO"/>
+    <logger name="com.codahale.metrics" level="INFO"/>
+    <logger name="com.ryantenney" level="INFO"/>
+    <logger name="com.sun.xml.internal.bind" level="INFO"/>
+    <logger name="com.zaxxer" level="INFO"/>
+    <logger name="io.undertow" level="INFO"/>
+    <logger name="net.sf.ehcache" level="INFO"/>
+    <logger name="org.apache" level="INFO"/>
     <logger name="org.apache.catalina.startup.DigesterFactory" level="OFF"/>
-    <logger name="org.bson" level="WARN"/>
-    <logger name="org.hibernate.validator" level="WARN"/>
-    <logger name="org.hibernate" level="WARN"/>
-    <logger name="org.hibernate.ejb.HibernatePersistence" level="OFF"/>
-    <logger name="org.springframework" level="WARN"/>
-    <logger name="org.springframework.web" level="WARN"/>
-    <logger name="org.springframework.security" level="WARN"/>
-    <logger name="org.springframework.cache" level="WARN"/>
-    <logger name="org.thymeleaf" level="WARN"/>
-    <logger name="org.xnio" level="WARN"/>
-    <logger name="springfox" level="WARN"/>
-    <logger name="liquibase" level="WARN"/>
-    <logger name="sun.rmi.transport" level="WARN"/>
+    <logger name="org.bson" level="INFO"/>
+    <logger name="org.hibernate.validator" level="INFO"/>
+    <logger name="org.hibernate" level="INFO"/>
+    <!--<logger name="org.hibernate.ejb.HibernatePersistence" level="OFF"/>-->
+    <logger name="org.springframework" level="INFO"/>
+    <logger name="org.springframework.web" level="INFO"/>
+    <logger name="org.springframework.web.client.RestTemplate" level="DEBUG"/>
+    <logger name="org.springframework.security" level="INFO"/>
+    <logger name="org.springframework.cache" level="INFO"/>
+    <logger name="org.thymeleaf" level="INFO"/>
+    <logger name="org.xnio" level="INFO"/>
+    <logger name="springfox" level="INFO"/>
+    <logger name="liquibase" level="INFO"/>
+    <logger name="sun.rmi.transport" level="INFO"/>
+    <logger name="org.eclipse.jetty" level="INFO"/>
 
     <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
         <resetJUL>true</resetJUL>

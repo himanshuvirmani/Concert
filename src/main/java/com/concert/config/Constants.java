@@ -10,6 +10,9 @@ public final class Constants {
     public static final String SPRING_PROFILE_PRODUCTION = "prod";
     public static final String SPRING_PROFILE_FAST = "fast";
     public static final String SPRING_PROFILE_TEST = "test";
+    public static final String HEALTH_CHECK_URI="/health";
+    public static final String SWAGGER_UI_URI="/swagger-ui";
+    public static final String SWAGGER_WEBJARS_URI="/webjars";
 
     private Constants() {
     }
