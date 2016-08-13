@@ -52,7 +52,9 @@
     <logger name="springfox" level="INFO"/>
     <logger name="liquibase" level="INFO"/>
     <logger name="sun.rmi.transport" level="INFO"/>
-    <logger name="org.eclipse.jetty" level="INFO"/>
+    <logger name="org.eclipse.jetty" level="WARN"/>
+    <logger name="jndi" level="WARN"/>
+
 
     <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
         <resetJUL>true</resetJUL>
