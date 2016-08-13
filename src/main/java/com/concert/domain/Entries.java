@@ -41,6 +41,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -63,7 +64,7 @@ public class Entries implements Serializable, RedisJsonMapper<Entries>{
 
     @JsonProperty(value = "attributes")
     @Field(value = "attributes")
-    private EntryAttributes entryAttributes;
+    private Map<String,Object> entryAttributes;
 
     @JsonProperty(value = "transaction_date")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
