@@ -72,7 +72,9 @@ dependencies {
     exclude group: 'commons-logging'
   }
   compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: spring_boot_version
-  compile group: 'org.springframework.boot', name: 'spring-boot-starter-jetty', version: spring_boot_version
+  compile (group: 'org.springframework.boot', name: 'spring-boot-starter-jetty', version: spring_boot_version) {
+    exclude module: 'org.eclipse.jetty:jetty-jndi'
+  }
   compile(group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: spring_boot_version) {
     exclude module: 'spring-boot-starter-tomcat'
   }
