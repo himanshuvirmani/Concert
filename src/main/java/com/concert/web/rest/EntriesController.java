@@ -19,7 +19,6 @@ package com.concert.web.rest;
 import com.concert.domain.Entries;
 import com.concert.service.EntriesService;
 import com.concert.web.rest.errors.AggregateNotFoundException;
-import org.apache.commons.lang.ArrayUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;

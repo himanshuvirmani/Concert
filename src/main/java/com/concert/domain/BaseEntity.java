@@ -1,11 +1,11 @@
 package com.concert.domain;
 
 import com.concert.domain.util.CustomDateTimeDeserializer;
+import com.concert.domain.util.CustomDateTimeSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.concert.domain.util.CustomDateTimeSerializer;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.Type;
