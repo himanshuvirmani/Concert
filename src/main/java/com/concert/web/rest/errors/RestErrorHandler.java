@@ -17,9 +17,9 @@ public class RestErrorHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger(RestErrorHandler.class);
 
     @ExceptionHandler(AggregateNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public void handleTodoNotFoundException(AggregateNotFoundException ex) {
-        LOGGER.debug("handling 404 error on a todo entry");
+        LOGGER.debug(ex.getMessage());
     }
 }
 

@@ -9,4 +9,6 @@ public interface TemplateService {
     List<Template> getAllTemplates();
 
     Template addTemplate(Template template);
+
+    Template getTemplateByName(String name);
 }

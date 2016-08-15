@@ -17,23 +17,37 @@
 package com.concert.web.rest;
 
 import com.concert.domain.Entries;
+import com.concert.domain.util.EntriesValidator;
 import com.concert.service.EntriesService;
 import com.concert.web.rest.errors.AggregateNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/entries")
+@Slf4j
 public class EntriesController extends BaseController {
 
     @Autowired
     private EntriesService entriesService;
+
+    @Autowired
+    private EntriesValidator entriesValidator;
+
+    @InitBinder
+    protected void initBinder(WebDataBinder binder) {
+        binder.setValidator(entriesValidator);
+    }
 
     @RequestMapping(value = "/actor_id/{actor_id}", method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -50,8 +64,12 @@ public class EntriesController extends BaseController {
     @RequestMapping(value = "/", method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    public List<Entries> addEntries(@RequestBody List<Entries> entries) {
+    public List<Entries> addEntries(@Valid @RequestBody List<Entries> entries, BindingResult bindingResult ) {
         if(CollectionUtils.isEmpty(entries)) return new ArrayList<>();
+        if( bindingResult.hasErrors())
+        {
+            throw new AggregateNotFoundException(bindingResult.getAllErrors().get(0).getCode());
+        }
         List<Entries> result = this.entriesService.addEntries(entries);
         if (result == null) {
             throw new AggregateNotFoundException();

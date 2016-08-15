@@ -5,4 +5,12 @@ package com.concert.web.rest.errors;
  */
 public class AggregateNotFoundException extends RuntimeException {
 
+    public AggregateNotFoundException(String message) {
+        super(message);
+    }
+
+    public AggregateNotFoundException() {
+        super();
+    }
+
 }

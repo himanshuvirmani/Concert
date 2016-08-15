@@ -54,6 +54,8 @@ public class Entries implements Serializable, RedisJsonMapper<Entries>{
 
     private String type;
 
+    private String template;
+
     private int version;
 
     @JsonProperty(value = "attributes")

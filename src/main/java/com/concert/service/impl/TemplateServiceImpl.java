@@ -31,4 +31,9 @@ public class TemplateServiceImpl implements TemplateService {
         //XXX Add validations for template requirements.
         return templateRepository.save(template);
     }
+
+    @Override
+    public Template getTemplateByName(String name) {
+        return templateRepository.findByName(name);
+    }
 }
