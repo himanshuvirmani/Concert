@@ -13,6 +13,7 @@ import org.joda.time.DateTime;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Map;
 
@@ -29,10 +30,13 @@ public class Template implements Serializable{
     @Id
     private String id;
 
+    @NotNull
     private String name;
 
+    @NotNull
     private int version;
 
+    @NotNull
     @JsonProperty(value = "created_at")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @Field(value = "created_at")
@@ -40,6 +44,7 @@ public class Template implements Serializable{
     @JsonDeserialize(using = CustomDateTimeDeserializer.class)
     private DateTime createdAt;
 
+    @NotNull
     @JsonProperty(value = "updated_at")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @JsonSerialize(using = CustomDateTimeSerializer.class)
@@ -47,6 +52,7 @@ public class Template implements Serializable{
     @Field(value = "updated_at")
     private DateTime updatedAt;
 
+    @NotNull
     @Field(value = "attributes")
     @JsonProperty(value = "attributes")
     private Map<String,Attribute> attributeMap;

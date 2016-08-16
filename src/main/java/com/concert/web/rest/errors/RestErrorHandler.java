@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-/**
- * Created by neerajsi on 18/09/15.
- */
-
 @ControllerAdvice
 public class RestErrorHandler {
 

@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -16,10 +17,12 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper=false)
 public class Attribute implements Serializable{
 
+    @NotNull
     @JsonProperty(value = "required")
     @Field(value = "required")
     private boolean required;
 
+    @NotNull
     @JsonProperty(value = "type")
     @Field(value = "type")
     private String type;

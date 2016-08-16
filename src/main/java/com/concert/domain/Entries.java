@@ -33,6 +33,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.validation.constraints.NotNull;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.Map;
@@ -52,16 +53,20 @@ public class Entries implements Serializable, RedisJsonMapper<Entries>{
     @Field(value = "actor_id")
     private String actorId;
 
+    @NotNull
     private String type;
 
+    @NotNull
     private String template;
 
     private int version;
 
+    @NotNull
     @JsonProperty(value = "attributes")
     @Field(value = "attributes")
     private Map<String,Object> entryAttributes;
 
+    @NotNull
     @JsonProperty(value = "transaction_date")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @JsonSerialize(using = CustomDateTimeSerializer.class)
