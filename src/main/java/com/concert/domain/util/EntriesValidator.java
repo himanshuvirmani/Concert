@@ -12,6 +12,7 @@ import org.springframework.util.Assert;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -69,7 +70,7 @@ public class EntriesValidator implements Validator {
                     try {
                         DateTime date = DateTime.parse((String) entryAttributes.get(key));
                         log.info("Key Matched  " + key + "for type " + attribute.getType());
-                    } catch (UnsupportedOperationException | IllegalArgumentException e){
+                    } catch (UnsupportedOperationException | IllegalArgumentException e) {
                         e.printStackTrace();
                         errors.reject("Wrong date time value " + entryAttributes.get(key));
                     }
@@ -89,6 +90,11 @@ public class EntriesValidator implements Validator {
 
     private void removeExtraAttributes(Template template, Map<String, Object> entryAttributes) {
         // remove extra unneeded attributes
-        entryAttributes.keySet().stream().filter(entry -> !template.getAttributeMap().containsKey(entry)).forEach(entryAttributes::remove);
+        Iterator itr = entryAttributes.keySet().iterator();
+        while (itr.hasNext()) {
+            if (!template.getAttributeMap().containsKey(itr.next())) {
+                itr.remove();
+            }
+        }
     }
 }
